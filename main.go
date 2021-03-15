@@ -229,7 +229,11 @@ func run(arg string) error {
 		packagePath := filepath.Join(basePackagePath+"/", relPath)
 
 		importPackageName := ""
-		for _, p := range strings.Split(relPath, "/") {
+		for i, p := range strings.Split(relPath, "/") {
+			if i < 1 {
+				continue
+			}
+
 			if importPackageName == "" {
 				importPackageName += p
 				continue
